@@ -28,28 +28,31 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Autor = new javax.swing.JLabel();
-        Calcular = new javax.swing.JButton();
-        Dato = new javax.swing.JTextField();
-        Resultado = new javax.swing.JTextField();
-        Infodato = new javax.swing.JLabel();
-        Inforesultado = new javax.swing.JLabel();
+        autor = new javax.swing.JLabel();
+        calcular = new javax.swing.JButton();
+        dato = new javax.swing.JTextField();
+        resultado = new javax.swing.JTextField();
+        infodato = new javax.swing.JLabel();
+        inforesultado = new javax.swing.JLabel();
+        warningLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Conversor de Temperatura");
 
-        Autor.setText("Hecho por Italo Garleni");
+        autor.setText("Hecho por Italo Garleni");
 
-        Calcular.setText("Convierte");
-        Calcular.addActionListener(new java.awt.event.ActionListener() {
+        calcular.setText("Convierte");
+        calcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CalcularActionPerformed(evt);
+                calcularActionPerformed(evt);
             }
         });
 
-        Infodato.setText("Dato: Temperatura Celsius");
+        infodato.setText("Dato: Temperatura Celsius");
 
-        Inforesultado.setText("Resultado: Temperatura Fahrenheit");
+        inforesultado.setText("Resultado: Temperatura Fahrenheit");
+
+        warningLabel.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -59,18 +62,19 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Autor, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Infodato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Dato))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(infodato, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dato, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Calcular)
+                        .addComponent(calcular)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Inforesultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Resultado))))
+                            .addComponent(inforesultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(resultado)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(autor, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(warningLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -78,30 +82,45 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Infodato)
-                    .addComponent(Inforesultado))
+                    .addComponent(infodato)
+                    .addComponent(inforesultado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Calcular)
-                    .addComponent(Dato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Resultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(Autor, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(calcular)
+                    .addComponent(dato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(resultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(warningLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(autor, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularActionPerformed
-        if (isNumber(Dato.getText())) {
-            Double Tcel = Double.valueOf(Dato.getText());
-            Double Tfah = 1.8 * Tcel + 32.0;
-            Resultado.setText(Tfah.toString());
-        }else{
-            Resultado.setText("");
+    private void calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularActionPerformed
+        if (isNumber(dato.getText())) 
+        {
+            if (Double.valueOf(dato.getText()) >= -273.15)
+            {
+                Double Tcel = Double.valueOf(dato.getText());
+                Double Tfah = 1.8 * Tcel + 32.0;
+                resultado.setText(Tfah.toString());
+                warningLabel.setText("");
+            }
+            else
+            {
+                resultado.setText("");
+                warningLabel.setText("Introduce un numero superior a -273.15ºC");
+            }
         }
-    }//GEN-LAST:event_CalcularActionPerformed
+        else
+        {
+            resultado.setText("");
+            warningLabel.setText("Introduce un número");
+        }
+    }//GEN-LAST:event_calcularActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,19 +158,28 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Autor;
-    private javax.swing.JButton Calcular;
-    private javax.swing.JTextField Dato;
-    private javax.swing.JLabel Infodato;
-    private javax.swing.JLabel Inforesultado;
-    private javax.swing.JTextField Resultado;
+    private javax.swing.JLabel autor;
+    private javax.swing.JButton calcular;
+    private javax.swing.JTextField dato;
+    private javax.swing.JLabel infodato;
+    private javax.swing.JLabel inforesultado;
+    private javax.swing.JTextField resultado;
+    private javax.swing.JLabel warningLabel;
     // End of variables declaration//GEN-END:variables
 
     private boolean isNumber(String string) {
         if (string == null || string.isEmpty()){
             return false;
         }
-        for (int i = 0; i < string.length();i++){
+        int i = 0;
+        if (string.charAt(0) == '-'){
+            if (string.length() > 1){
+                i++;
+            }else {
+                return false;
+            }
+        }
+        for (; i < string.length();i++){
             if (!Character.isDigit(string.charAt(i))){
                 return false;
             }
