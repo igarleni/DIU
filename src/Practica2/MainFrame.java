@@ -130,12 +130,12 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void deslizadorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deslizadorMousePressed
         // TODO add your handling code here:
-        estadoPosicion.setText("Presionado");
+        estadoTecla.setText("Presionado");
     }//GEN-LAST:event_deslizadorMousePressed
 
     private void deslizadorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deslizadorMouseReleased
         // TODO add your handling code here:
-        estadoPosicion.setText("Liberado");
+        estadoTecla.setText("Liberado");
     }//GEN-LAST:event_deslizadorMouseReleased
 
     /**
