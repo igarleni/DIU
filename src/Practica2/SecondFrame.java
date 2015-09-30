@@ -53,6 +53,7 @@ public class SecondFrame extends javax.swing.JFrame {
         colorPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Hecho por Italo Garleni");
 
         redSlider.setBackground(new java.awt.Color(255, 0, 0));
         redSlider.addChangeListener(new javax.swing.event.ChangeListener() {
