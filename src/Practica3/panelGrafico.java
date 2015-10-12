@@ -42,5 +42,15 @@ public class panelGrafico extends JPanel{
         }
         x1 = 150;
         y1 = 300;
+        x2 = x1 + (int) (50.0*Math.sin(anguloTimon));
+        y2 = y1 + (int) (50.0*Math.cos(anguloTimon));
+        if(focusTimon){
+            g2.setColor(Color.red);
+            g2.drawLine(x1, y1, x2, y2);
+            g2.setColor(Color.black);
+        }
+        else {
+            g2.drawLine(x1, y1, x2, y2);
+        }
     }
 }
