@@ -14,12 +14,13 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author usuario
+ * @author Italo Garleni
  */
 public class panelGrafico extends JPanel{
     public Double anguloVela=0.0, anguloTimon=0.0;
     public boolean focusVela=false, focusTimon=false;
     
+    @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Rectangle rect = this.getBounds();
