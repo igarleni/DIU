@@ -65,7 +65,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        Capas.add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 100));
+        Capas.add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, 100));
 
         Panel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Panel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -91,7 +91,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        Capas.add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, 100));
+        Capas.add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, 100));
 
         Panel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Panel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -117,11 +117,9 @@ public class MainFrame extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        Capas.add(Panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
+        Capas.add(Panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, -1, -1));
 
-        CapaActiva.setText("jTextField1");
-
-        CapaInfo.setText("jLabel1");
+        CapaInfo.setText("Capa Activa");
 
         Autor.setText("Hecho por Italo Garleni");
 
