@@ -33,8 +33,8 @@ public class MainFrame extends javax.swing.JFrame {
         Autor = new javax.swing.JLabel();
         Capas = new javax.swing.JLayeredPane();
         Panel1 = new javax.swing.JPanel();
-        Fondo = new javax.swing.JLabel();
         Panel2 = new javax.swing.JPanel();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -71,12 +71,20 @@ public class MainFrame extends javax.swing.JFrame {
 
         Capas.add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
-        Fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Practica5/Torino_panorama_Superga.jpg"))); // NOI18N
-        Fondo.setToolTipText("");
-        Capas.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 310));
-
         Panel2.setBackground(new java.awt.Color(0, 255, 0));
+        Panel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                Panel2MouseDragged(evt);
+            }
+        });
+        Panel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                Panel2MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                Panel2MouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout Panel2Layout = new javax.swing.GroupLayout(Panel2);
         Panel2.setLayout(Panel2Layout);
@@ -90,6 +98,11 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         Capas.add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 190, 160));
+
+        Fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Practica5/Torino_panorama_Superga.jpg"))); // NOI18N
+        Fondo.setToolTipText("");
+        Capas.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 310));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,8 +132,12 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void Panel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel1MousePressed
         // TODO add your handling code here:
+        
+        Capas.moveToFront(Panel1);
+        
         Rectangle r = Capas.getBounds();
         Wbox = r.width;
+        Hbox = r.height;
         r = Panel1.getBounds();
         Wpanel1 = r.width;
         Hpanel1 = r.height;
@@ -148,7 +165,7 @@ public class MainFrame extends javax.swing.JFrame {
         int Xmax = Wbox - Wpanel1;
         int Ymax = Hbox - Hpanel1;
         if (Xpanel1 > Xmax) Xpanel1 = Xmax;
-        if (Xpanel1 > Xmax) Xpanel1 = Xmax;
+        if (Ypanel1 > Ymax) Ypanel1 = Ymax;
         
         p.x = Xpanel1;
         p.y = Ypanel1;
@@ -160,6 +177,53 @@ public class MainFrame extends javax.swing.JFrame {
         Panel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
     }//GEN-LAST:event_Panel1MouseReleased
+
+    private void Panel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel2MousePressed
+        // TODO add your handling code here:
+        
+        Capas.moveToFront(Panel2);
+        
+        Rectangle r = Capas.getBounds();
+        Wbox = r.width;
+        Hbox = r.height;
+        r = Panel2.getBounds();
+        Wpanel2 = r.width;
+        Hpanel2 = r.height;
+        
+        Xpanel2_0 = r.x;
+        Ypanel2_0 = r.y;
+        
+        Point p = Capas.getMousePosition();
+        Xmouse_0 = p.x;
+        Ymouse_0 = p.y;
+        
+        Panel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_Panel2MousePressed
+
+    private void Panel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel2MouseDragged
+        // TODO add your handling code here:
+        Point p = Capas.getMousePosition();
+        
+        int Xpanel2 = Xpanel2_0 + p.x - Xmouse_0;
+        int Ypanel2 = Ypanel2_0 + p.y - Ymouse_0;
+        
+        if (Xpanel2 < 0) Xpanel2 = 0;
+        if (Ypanel2 < 0) Ypanel2 = 0;
+        
+        int Xmax = Wbox - Wpanel2;
+        int Ymax = Hbox - Hpanel2;
+        if (Xpanel2 > Xmax) Xpanel2 = Xmax;
+        if (Ypanel2 > Ymax) Ypanel2 = Ymax;
+        
+        p.x = Xpanel2;
+        p.y = Ypanel2;
+        Panel2.setLocation(p);
+    }//GEN-LAST:event_Panel2MouseDragged
+
+    private void Panel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel2MouseReleased
+        // TODO add your handling code here:
+        Panel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_Panel2MouseReleased
 
     /**
      * @param args the command line arguments
@@ -204,9 +268,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel Panel2;
     // End of variables declaration//GEN-END:variables
     
-    //Variables del panel1
-    int Wbox, Hbox, Wpanel1, Hpanel1;
+    //Variables del tamaño del Panel1, Panel2 y el JlayeredPane
+    int Wbox, Hbox, Wpanel1, Hpanel1, Wpanel2, Hpanel2;
     
-    //variables del ratón y el panel durante el movimiento
-    int Xpanel1_0, Ypanel1_0, Xmouse_0, Ymouse_0;
+    //variables del ratón y los paneles durante el movimiento
+    int Xpanel1_0, Ypanel1_0, Xpanel2_0, Ypanel2_0, Xmouse_0, Ymouse_0;
 }
